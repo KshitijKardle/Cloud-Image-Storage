@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ImageTile from "../components/ImageTile";
+import Modal from "../components/Modal";
+import Navbar from "../components/Navbar";
 
 function Home() {
   const [images, setImages] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     axios
@@ -15,11 +17,25 @@ function Home() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-      {images.map((url, idx) => (
-        <ImageTile key={idx} url={url} />
-      ))}
-    </div>
+    <>
+      <Navbar></Navbar>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        {images.map((url, idx) => (
+          <img
+            key={idx}
+            src={url}
+            alt={`Image ${idx}`}
+            className="cursor-pointer rounded-lg shadow hover:scale-105 transition "
+            onClick={() => setSelectedImage(url)}
+          />
+        ))}
+        <Modal
+          isOpen={!!selectedImage}
+          onClose={() => setSelectedImage(null)}
+          imageUrl={selectedImage}
+        />
+      </div>
+    </>
   );
 }
 
