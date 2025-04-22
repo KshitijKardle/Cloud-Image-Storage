@@ -19,7 +19,7 @@ function Home() {
   return (
     <>
       <Navbar></Navbar>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mt-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mt-16 bg-gradient-to-bl from-indigo-600 to-indigo-900">
         {images.map((url, idx) => (
           <img
             key={idx}
