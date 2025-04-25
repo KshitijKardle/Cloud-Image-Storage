@@ -1,4 +1,3 @@
-// Updated Modal.jsx
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaDownload, FaShare } from "react-icons/fa";
 import { useEffect } from "react";
@@ -52,14 +51,16 @@ function Modal({ isOpen, onClose, imageUrl }) {
             </motion.button>
 
             {/* Image */}
-            <motion.img
-              src={imageUrl}
-              alt="Full"
-              className="max-h-[60vh] w-full rounded-lg shadow-lg object-contain mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            />
+            <div className="w-full h-[60vh] flex items-center justify-center overflow-hidden rounded-lg shadow-lg">
+              <motion.img
+                src={imageUrl}
+                alt="Full"
+                className="max-h-full max-w-full object-contain"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              />
+            </div>
 
             {/* Action Buttons */}
             <motion.div
